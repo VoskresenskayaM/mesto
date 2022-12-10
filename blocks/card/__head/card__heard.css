@@ -1,0 +1,14 @@
+.card__heard {
+    height: 21px;
+    min-width: 25px;
+    transition: opacity 0.5s ease;
+    background-image: url(../../../images/heart.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.card__heard:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}

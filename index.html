@@ -47,30 +47,92 @@
                 fill="white" />
         </svg>
     </header>
- <main class="page__content">
-    <section class="profile">
-        <div class="profile__image-block">
-        <img class="profile__image" src="./images/kusto.jpg" alt="фото профиля">
-        <div class="profile__title-block">
-            <h1 class="profile__title">Жак-Ив Кусто</h1>
-            <svg class="profile__edit"  viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="0.5" y="0.5" width="17" height="17" stroke="white"/>
-                <path d="M12.75 6.2462L7.20283 11.825L6.21226 10.8145L11.7453 5.25L12.75 6.2462ZM5.25 12.75L6.7217 12.3088L5.68868 11.3126L5.25 12.75Z" fill="white"/>
+    <main class="page__content">
+        <section class="profile">
+            <div class="profile__image-block">
+                <img class="profile__image" src="./images/kusto.jpg" alt="фото профиля">
+                <div class="profile__title-block">
+                    <h1 class="profile__title">Жак-Ив Кусто</h1>
+                    <svg class="profile__edit" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="0.5" y="0.5" width="17" height="17" stroke="white" />
+                        <path
+                            d="M12.75 6.2462L7.20283 11.825L6.21226 10.8145L11.7453 5.25L12.75 6.2462ZM5.25 12.75L6.7217 12.3088L5.68868 11.3126L5.25 12.75Z"
+                            fill="white" />
+                    </svg>
+                    <p class="profile__subtitle">Исследователь океана</p>
+                </div>
+            </div>
+            <div class="profile__add-button">
+                <svg class="profile__add-plus" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 7.11111H8.88889V0H7.11111V7.11111H0V8.88889H7.11111V16H8.88889V8.88889H16V7.11111Z"
+                        fill="white" />
                 </svg>
-            <p class="profile__subtitle">Исследователь океана</p>
-        </div>
-    </div>
-        <div class="profile__add-button">
-            <svg class="profile__add-plus" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M16 7.11111H8.88889V0H7.11111V7.11111H0V8.88889H7.11111V16H8.88889V8.88889H16V7.11111Z"
-                    fill="white" />
+            </div>
+        </section>
+        <section aria-label="gallery">
+            <ul class="cards">
+                <li class="card">
+                    <img class="card__image" src="./images/karachaevo-cherkesiya.jpg" alt="Карачаево-Черкесия">
+                    <div class="card__title-block">
+                        <p class="card__title">Карачаевск</p>
+                        <div class="card__heard"></div>
+                    </div>
+                </li>
+                <li class="card">
+                    <img class="card__image" src="./images/Elbrus.jpg" alt="Эльбрус">
+                    <div class="card__title-block">
+                        <p class="card__title">Гора Эльбрус</p>
+                        <div class="card__heard"></div>
+                    </div>
+                </li>
+                <li class="card">
+                    <img class="card__image" src="./images/Dombay.jpg" alt="Домбай">
+                    <div class="card__title-block">
+                        <p class="card__title">Домбай</p>
+                        <div class="card__heard"></div>
+                    </div>
+                </li>
+                <li class="card">
+                    <img class="card__image" src="./images/Elbrus.jpg" alt="Эльбрус">
+
+                    <div class="card__title-block">
+                        <p class="card__title">Гора Эльбрус</p>
+                        <div class="card__heard"></div>
+                    </div>
+                </li>
+                <li class="card">
+                    <img class="card__image" src="./images/Dombay.jpg" alt="Домбай">
+                    <div class="card__title-block">
+                        <p class="card__title">Домбай</p>
+                        <div class="card__heard"></div>
+                    </div>
+                </li>
+                <li class="card">
+                    <img class="card__image" src="./images/karachaevo-cherkesiya.jpg" alt="Карачаево-Черкесия">
+                    <div class="card__title-block">
+                        <p class="card__title">Карачаево-Черкесия</p>
+                        <div class="card__heard"></div>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </main>
+    <footer class="footer">
+        <p class="footer__author"> 2022 Mesto Russia</p>
+    </footer>
+    <div class="popup">
+        <form class="popup__container">
+            <svg class="popup__container-close" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 18L12 10L20 2L18 0L10 8L2 0L0 2L8 10L0 18L2 20L10 12L18 20L20 18Z" fill="white" />
             </svg>
-        </div>
-    </section>
-</main>
- <footer class="footer">
-</footer>
+            <h2 class="popup__container-title">Редактировать профиль</h2>
+            <input class="popup__container-contact-info  popup__container-contact-info_name" type="text" name="name"
+                value="">
+            <input class="popup__container-contact-info  popup__container-contact-info_profession" type="text"
+                name="profession" value="">
+            <button class="popup__container-button" type="submit">Сохранить</button>
+        </form>
+    </div>
+    <script src="./scripts/main.js"></script>
 </body>
-
-
 </html>

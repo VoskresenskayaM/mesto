@@ -1,0 +1,19 @@
+.popup__container-contact-info {
+    border: none;
+    border-bottom: 1px solid #000000;
+    height: 35px;
+    margin-top: 20px;
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: 400;
+    width: 84%;
+}
+
+@media screen and (min-width: 1024px) {
+    .popup__container-contact-info {
+        min-width: 358px;
+        /*height: 50px;*/
+        margin-top: 4px;
+        height: 50px;
+    }
+}
