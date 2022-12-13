@@ -1,11 +1,10 @@
 .profile__image-block {
     display: flex;
     flex-direction: column;
-
 }
 
 @media screen and (min-width: 1024px) {
-    .profile__image-block{
-    flex-direction: row;
-}
+    .profile__image-block {
+        flex-direction: row;
+    }
 }

@@ -1,16 +1,16 @@
-.cards {
+.gallery__cards {
     display: grid;
     margin: 0 auto;
     width: 100%;
     grid-template-columns: repeat(auto-fill, minmax(282px, 1fr));
     grid-template-rows: auto;
-    grid-gap: 20px;
+    grid-gap: 19px;
     padding: 36px 0 0 0;
     list-style-type: none;
 }
 
 @media screen and (min-width: 768px) {
-    .cards {
+    .gallery__cards {
         justify-content: center;
         grid-template-columns: repeat(auto-fill, 282px);
         grid-gap: 17px;
@@ -18,8 +18,8 @@
 }
 
 @media screen and (min-width: 1024px) {
-    .cards {
-        padding-top: 49px;
+    .gallery__cards {
+        padding-top: 50px;
         grid-gap: 20px 17px;
     }
 }

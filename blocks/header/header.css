@@ -4,8 +4,7 @@
     justify-content: start;
     width: 100%;
     min-height: 56px;
-    border-bottom: 1px solid rgba(84, 84, 84, 1);
-    
+    border-bottom: 1px solid rgba(84, 84, 84, 0.7);
 }
 
 @media screen and (min-width: 768px) {
@@ -15,11 +14,8 @@
     }
 }
 
-@media screen and (min-width: 1024px)
-{
+@media screen and (min-width: 1024px) {
     .header {
         max-width: 880px;
-        
-      
     }
 }

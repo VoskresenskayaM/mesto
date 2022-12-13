@@ -1,4 +1,4 @@
-.popup__container-button {
+.form__button {
     background-color: rgba(0, 0, 0, 1);
     height: 46px;
     width: 238px;
@@ -13,17 +13,17 @@
     cursor: pointer;
 }
 
-.popup__container-button:hover {
-    background-color: rgba(0, 0, 0, 0.5);
+.form__button :hover {
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
 @media screen and (min-width: 1024px) {
-    .popup__container-button {
-        margin-top: 41px;
+    .form__button {
+        margin-top: 48px;
+        margin-bottom: 4px;
         min-width: 358px;
         font-size: 18px;
         line-height: 22px;
         height: 50px;
-
     }
 }

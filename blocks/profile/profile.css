@@ -4,11 +4,12 @@
     justify-content: start;
     margin: 0 auto;
 }
-    @media screen and (min-width: 1024px) {
-        .profile {
-            flex-direction: row;
-            justify-content: space-between;
+
+@media screen and (min-width: 1024px) {
+    .profile {
+        flex-direction: row;
+        justify-content: space-between;
         align-items: center;
         min-width: 880px;
-        }
     }
+}

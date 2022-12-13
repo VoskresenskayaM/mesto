@@ -5,10 +5,9 @@
 }
 
 @media screen and (min-width: 1024px) {
-.logo {
-    margin: 45px 0 40px 0;
-    width: 142px;
-    height: 33px;
-}
-
+    .logo {
+        margin: 45px 0 40px 0;
+        width: 142px;
+        height: 33px;
+    }
 }
