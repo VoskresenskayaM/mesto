@@ -12,8 +12,8 @@ let formElements = popup.querySelector('.form');
 let closePopupButton = popup.querySelector('.popup__close-button');
 
 /*данные из формы*/ 
-let nameInput = formElements.querySelector('.form__input_theme_first');
-let jobInput = formElements.querySelector('.form__input_theme_second');
+let nameInput = formElements.querySelector('.form__input_theme_name');
+let jobInput = formElements.querySelector('.form__input_theme_profession');
 
 /*открытие попапа*/ 
 function openPopup() {

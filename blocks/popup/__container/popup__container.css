@@ -7,13 +7,12 @@
    min-height: 322px;
    background-color: #FFFFFF;
    border-radius: 10px;
-   margin-top: 123px;
+   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
 }
 
 @media screen and (min-width: 1024px) {
    .popup__container {
       min-width: 430px;
       min-height: 330px;
-      margin-top: 195px;
    }
 }
