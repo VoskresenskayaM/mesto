@@ -13,8 +13,8 @@
     cursor: pointer;
 }
 
-.form__button :hover {
-    background-color: rgba(0, 0, 0, 0.6);
+.form__button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
 @media screen and (min-width: 1024px) {

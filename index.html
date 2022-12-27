@@ -27,55 +27,24 @@
         </section>
         <section class="gallery" aria-label="галлерея">
             <ul class="gallery__cards">
-                <li class="gallery__card">
-                    <img class="gallery__card-image" src="./images/karachaevo-cherkesiya.jpg" alt="Карачаево-Черкесия">
-                    <div class="gallery__card-title-block">
-                        <h2 class="gallery__card-title">Карачаевск</h2>
-                        <button class="gallery__card-heart" type="button" aria-label="лайк"></button>
-                    </div>
-                </li>
-                <li class="gallery__card">
-                    <img class="gallery__card-image" src="./images/Elbrus.jpg" alt="Эльбрус">
-                    <div class="gallery__card-title-block">
-                        <h2 class="gallery__card-title">Гора Эльбрус</h2>
-                        <button class="gallery__card-heart" type="button" aria-label="лайк"></button>
-                    </div>
-                </li>
-                <li class="gallery__card">
-                    <img class="gallery__card-image" src="./images/Dombay.jpg" alt="Домбай">
-                    <div class="gallery__card-title-block">
-                        <h2 class="gallery__card-title">Домбай</h2>
-                        <button class="gallery__card-heart" type="button" aria-label="лайк"></button>
-                    </div>
-                </li>
-                <li class="gallery__card">
-                    <img class="gallery__card-image" src="./images/Elbrus.jpg" alt="Эльбрус">
-                    <div class="gallery__card-title-block">
-                        <h2 class="gallery__card-title">Гора Эльбрус</h2>
-                        <button class="gallery__card-heart" type="button" aria-label="лайк"></button>
-                    </div>
-                </li>
-                <li class="gallery__card">
-                    <img class="gallery__card-image" src="./images/Dombay.jpg" alt="Домбай">
-                    <div class="gallery__card-title-block">
-                        <h2 class="gallery__card-title">Домбай</h2>
-                        <button class="gallery__card-heart" type="button" aria-label="лайк"></button>
-                    </div>
-                </li>
-                <li class="gallery__card">
-                    <img class="gallery__card-image" src="./images/karachaevo-cherkesiya.jpg" alt="Карачаево-Черкесия">
-                    <div class="gallery__card-title-block">
-                        <h2 class="gallery__card-title">Карачаево-Черкесия</h2>
-                        <button class="gallery__card-heart" type="button" aria-label="лайк"></button>
-                    </div>
-                </li>
+                <template id="gallery__card">
+                    <li class="gallery__card">
+                        <img class="gallery__card-delete" src="./images/delete.svg" alt="удалить">
+                        <img class="gallery__card-image" src="./images/karachaevo-cherkesiya.jpg"
+                            alt="Карачаево-Черкесия">
+                        <div class="gallery__card-title-block">
+                            <h2 class="gallery__card-title">Карачаево-Черкесия</h2>
+                            <button class="gallery__card-heart" type="button" aria-label="лайк"></button>
+                        </div>
+                    </li>
+                </template>
             </ul>
         </section>
     </main>
     <footer class="footer">
         <p class="footer__author"> 2022 Mesto Russia</p>
     </footer>
-    <div class="popup">
+    <div class="popup  popup_type_edit">
         <div class="popup__container">
             <button class="popup__close-button" type="button" aria-label="закрыть"></button>
             <form name="editUser" class="form">
@@ -86,6 +55,30 @@
             </form>
         </div>
     </div>
+    <div class="popup  popup_type_new-card">
+        <div class="popup__container">
+            <button class="popup__close-button" type="button" aria-label="закрыть"></button>
+            <form name="addCard" class="form">
+                <h3 class="form__title">Новое место</h3>
+                <input class="form__input  form__input_theme_place" type="text" name="name" value="">
+                <input class="form__input  form__input_theme_link" type="text" name="profession" value="">
+                <button class="form__button" type="submit">Сохранить</button>
+            </form>
+        </div>
+    </div>
+    <div class="popup  popup_type_image">
+        <template id="card-popup">
+            <figure class="card-popup">
+                <button class="popup__close-button" type="button" aria-label="закрыть"></button>
+                <figure class="card-popup">
+                    <img class="card-popup__image" src="./images/karachaevo-cherkesiya.jpg" alt="Карачаево-Черкесия">
+                    <figcaption>
+                        <h2 class="card-popup__title">Карачаево-Черкесия</h2>
+                    </figcaption>
+                </figure>
+        </template>
+    </div>
+    
     <script src="./scripts/index.js"></script>
 </body>
 
