@@ -49,8 +49,8 @@
             <button class="popup__close-button" type="button" aria-label="закрыть"></button>
             <form name="editUser" class="form">
                 <h3 class="form__title">Редактировать профиль</h3>
-                <input class="form__input  form__input_theme_name" type="text" name="name" value="">
-                <input class="form__input  form__input_theme_profession" type="text" name="profession" value="">
+                <input class="form__input  form__input_theme_name" type="text" name="name" value="" placeholder="Имя">
+                <input class="form__input  form__input_theme_profession" type="text" name="profession" value="" placeholder="Профессия">
                 <button class="form__button" type="submit">Сохранить</button>
             </form>
         </div>
@@ -60,14 +60,13 @@
             <button class="popup__close-button" type="button" aria-label="закрыть"></button>
             <form name="addCard" class="form">
                 <h3 class="form__title">Новое место</h3>
-                <input class="form__input  form__input_theme_place" type="text" name="name" value="">
-                <input class="form__input  form__input_theme_link" type="text" name="profession" value="">
-                <button class="form__button" type="submit">Сохранить</button>
+                <input class="form__input  form__input_theme_place" type="text" name="name" value="" placeholder="Название">
+                <input class="form__input  form__input_theme_link" type="text" name="profession" value="" placeholder="Ссылка на картинку">
+                <button class="form__button" type="submit">Создать</button>
             </form>
         </div>
     </div>
     <div class="popup  popup_type_image">
-        <template id="card-popup">
             <div class="card-popup">
                 <button class="popup__close-button" type="button" aria-label="закрыть"></button>
                 <figure class="card-popup">
@@ -77,7 +76,6 @@
                     </figcaption>
                 </figure>
             </div>
-        </template>
     </div>
 
     <script src="./scripts/index.js"></script>

@@ -7,7 +7,7 @@
     line-height: 17px;
     font-weight: 400;
     color: #ffffff;
-    margin-top: 45px;
+    margin-top: 31px;
     border-radius: 2px;
     transition: background-color .5s ease;
     cursor: pointer;
@@ -15,12 +15,13 @@
 
 .form__button:hover {
     background-color: rgba(0, 0, 0, 0.8);
+    margin-top: 20px;
 }
 
 @media screen and (min-width: 1024px) {
     .form__button {
-        margin-top: 48px;
-        margin-bottom: 4px;
+        margin-top: 33px;
+        margin-bottom: 17px;
         min-width: 358px;
         font-size: 18px;
         line-height: 22px;

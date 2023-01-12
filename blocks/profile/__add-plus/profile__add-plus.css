@@ -13,6 +13,7 @@
 
 .profile__add-plus:hover {
     opacity: 0.6;
+    cursor: pointer;
 }
 
 @media screen and (min-width: 1024px) {
