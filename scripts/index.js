@@ -42,7 +42,7 @@ const closePopupButton = popupEdit.querySelector('.popup__close-button');
 const nameInput = formElements.querySelector('.form__input_theme_name');
 const jobInput = formElements.querySelector('.form__input_theme_profession');
 
-/*попап карточки*/ 
+/*попап карточки*/
 const popupTypeImage = document.querySelector('.popup_type_image');
 
 /*галлерея*/
@@ -81,27 +81,27 @@ function sendEditForm(evt) {
 };
 
 /*создание карточки*/
-function addCard(cardObject) {
+function createCard(cardObject) {
     const cardTemplate = document.querySelector('#gallery__card').content;
     const cardElement = cardTemplate.querySelector('.gallery__card').cloneNode(true);
     /*событие для удаление карточки*/
-    cardElement.querySelector('.gallery__card-delete').addEventListener('click', ()=> {
+    cardElement.querySelector('.gallery__card-delete').addEventListener('click', () => {
         cardElement.closest('.gallery__card').remove();
     });
- 
+
     const image = cardElement.querySelector('.gallery__card-image');
     image.src = cardObject.link;
     image.alt = cardObject.name;
-     /*событие для открытия попап карточки*/
-    image.addEventListener('click',  () => {
+    /*событие для открытия попап карточки*/
+    image.addEventListener('click', () => {
         openPopup(popupTypeImage);
-        openCardPopup(cardObject); 
+        openCardPopup(cardObject);
     });
 
     cardElement.querySelector('.gallery__card-title').textContent = cardObject.name;
 
     /*лайк*/
-    cardElement.querySelector('.gallery__card-heart').addEventListener('click',  (evt) => {
+    cardElement.querySelector('.gallery__card-heart').addEventListener('click', (evt) => {
         evt.target.classList.toggle('gallery__card-heart_active');
     });
     return cardElement
@@ -110,40 +110,33 @@ function addCard(cardObject) {
 /*рендеринг страницы*/
 function renderCards(cardList) {
     cardList.forEach(element => {
-        cardsList.append(addCard(element));
+        cardsList.append(createCard(element));
     });
 };
 
 renderCards(initialCards);
 
 /*открытие попапа с карточкой*/
-function openCardPopup (cardObject) {
-    const popup = document.querySelector('.popup_type_image'); 
-    const image = popup.querySelector('.card-popup__image');
-    image.src= cardObject.link;
-    image.alt= cardObject.name;
-    /*событие для закрытия попапа с карточкой*/
-    popup.querySelector('.popup__close-button').addEventListener('click', (evt) =>
-    {
-        closePopup(popupTypeImage);
-    });
-    popup.querySelector('.card-popup__title').textContent = cardObject.name;
-    popup.append(card);
+function openCardPopup(cardObject) {
+    const image = popupTypeImage.querySelector('.card-popup__image');
+    image.src = cardObject.link;
+    image.alt = cardObject.name;
+    popupTypeImage.querySelector('.card-popup__title').textContent = cardObject.name;
 }
 
-/*событие на открытие формы редактирования профиля*/ 
+/*событие на открытие формы редактирования профиля*/
 openEditPopupButton.addEventListener('click', () => {
     openPopup(popupEdit);
     nameInput.value = nameProfile.textContent;
     jobInput.value = jobProfile.textContent;
 });
 
-/*событие на закрытие формы редактирования профиля*/ 
+/*событие на закрытие формы редактирования профиля*/
 closePopupButton.addEventListener('click', () => {
     closePopup(popupEdit);
 });
 
-/*событие на сохранение дынных формы редактирования профиля*/ 
+/*событие на сохранение дынных формы редактирования профиля*/
 formElements.addEventListener('submit', sendEditForm);
 
 /*событие на добавление карточки*/
@@ -159,12 +152,18 @@ closeAddCardButton.addEventListener('click', () => {
 /*событие на добавление карточки*/
 formElementsAddCard.addEventListener('submit', (evt) => {
     evt.preventDefault();
-    const card = new Object();
-    card.name = placeInput.value;
-    card.link = linkInput.value;
-    const newCard = addCard(card);
-    cardsList.prepend(newCard);
+    const card = {
+        name: placeInput.value,
+        link: linkInput.value
+    }
+    cardsList.prepend(createCard(card));
+    formElementsAddCard.reset();
     closePopup(popupAddCard);
+});
+
+/*событие на закрытие попапа с карточкой*/
+popupTypeImage.querySelector('.popup__close-button').addEventListener('click', (evt) => {
+    closePopup(popupTypeImage);
 });
 
 
