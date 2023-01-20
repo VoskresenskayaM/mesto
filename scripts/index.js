@@ -35,12 +35,16 @@ const jobProfile = profile.querySelector('.profile__subtitle');
 
 /*форма редактирования профиля*/
 const popupEdit = document.querySelector('.popup_type_edit');
-const formElements = popupEdit.querySelector('.form');
+const formElementsEdit = popupEdit.querySelector('.form');
 const closePopupButton = popupEdit.querySelector('.popup__close-button');
 
 /*данные из формы*/
-const nameInput = formElements.querySelector('.form__input_theme_name');
-const jobInput = formElements.querySelector('.form__input_theme_profession');
+const nameInput = formElementsEdit.querySelector('.form__input_theme_name');
+const jobInput = formElementsEdit.querySelector('.form__input_theme_profession');
+
+/*ошибки инпут*/
+const editInputs = formElementsEdit.querySelectorAll('.form__input')
+const editInputErrors = formElementsEdit.querySelector('.form__input-error')
 
 /*попап карточки*/
 const popupTypeImage = document.querySelector('.popup_type_image');
@@ -60,13 +64,51 @@ const closeAddCardButton = popupAddCard.querySelector('.popup__close-button');
 const placeInput = popupAddCard.querySelector('.form__input_theme_place');
 const linkInput = popupAddCard.querySelector('.form__input_theme_link');
 
+/*закрытие попап по оверлей*/
+function closeForEsc(evt) {
+    const activPopup = document.querySelector('.popup_opened');
+    if (evt.key === 'Escape') closePopup(activPopup);
+}
+
+/*закрытие попап esc*/
+function closeForOverley(evt) {
+    const activPopup = document.querySelector('.popup_opened');
+    if (evt.target.classList.contains('popup') || 
+    evt.target.classList.contains('popup__close-button')) {
+        closePopup(activPopup);
+    }
+}
+
+/*сброс ошибок и очистка формы*/ 
+function resetErrors(form) {
+    const formInputs = Array.from(form.querySelectorAll('.form__input'));
+    const formInputErrors = Array.from(form.querySelectorAll('.form__input-error'));
+    formInputs.forEach((input) => {
+        if (input.classList.contains('form__input_type_error'))
+            input.classList.remove('form__input_type_error');
+    });
+    formInputErrors.forEach((inputError) => {
+        if (inputError.classList.contains('form__input-error_active'))
+            inputError.classList.remove('form__input-error_active')
+    });
+}
+
 /*открытие попапа*/
 function openPopup(popup) {
     popup.classList.add('popup_opened');
+    document.addEventListener('keydown', closeForEsc);
+    popup.addEventListener('click', closeForOverley);
 };
 
 /*закрытие попапа*/
 function closePopup(popup) {
+    const form = popup.querySelector('.form');
+    if (form!==null) {
+        resetErrors(form);
+        form.reset();
+    }
+    popup.removeEventListener('keydown', closeForEsc);
+    popup.removeEventListener('click', closeForOverley);
     popup.classList.remove('popup_opened');
 };
 
@@ -131,25 +173,10 @@ openEditPopupButton.addEventListener('click', () => {
     jobInput.value = jobProfile.textContent;
 });
 
-/*событие на закрытие формы редактирования профиля*/
-closePopupButton.addEventListener('click', () => {
-    closePopup(popupEdit);
-});
+/*событие на сохранение данных формы редактирования профиля*/
+formElementsEdit.addEventListener('submit', sendEditForm);
 
-/*событие на сохранение дынных формы редактирования профиля*/
-formElements.addEventListener('submit', sendEditForm);
-
-/*событие на добавление карточки*/
-addCardButton.addEventListener('click', () => {
-    openPopup(popupAddCard);
-});
-
-/*событие на закрытие формы добавления карточки*/
-closeAddCardButton.addEventListener('click', () => {
-    closePopup(popupAddCard);
-});
-
-/*событие на добавление карточки*/
+/*событие на добавление карточки в каталог*/
 formElementsAddCard.addEventListener('submit', (evt) => {
     evt.preventDefault();
     const card = {
@@ -157,14 +184,20 @@ formElementsAddCard.addEventListener('submit', (evt) => {
         link: linkInput.value
     }
     cardsList.prepend(createCard(card));
-    formElementsAddCard.reset();
     closePopup(popupAddCard);
 });
 
-/*событие на закрытие попапа с карточкой*/
-popupTypeImage.querySelector('.popup__close-button').addEventListener('click', (evt) => {
-    closePopup(popupTypeImage);
+/*событие на открытие формы добавления карточки в попап*/
+addCardButton.addEventListener('click', () => {
+    openPopup(popupAddCard);
 });
+
+
+
+
+
+
+
 
 
 
