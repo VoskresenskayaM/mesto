@@ -1,14 +1,5 @@
-const settings = {
-    formSelector: '.form',
-    inputSelector: '.form__input',
-    submitButtonSelector: '.form__button',
-    inactiveButtonClass: 'form__button_inactive',
-    inputErrorClass: 'form__input_type_error',
-    errorClass: 'form__input-error_active'
-  }
 
 const showInputError = (formElement, inputElement, errorMessage, inputErrorClass, errorClass) => {
-
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`)
     inputElement.classList.add(inputErrorClass);
     errorElement.textContent = errorMessage;
@@ -38,13 +29,14 @@ const hasInvalidInput = (inputList) => {
 };
 
 const toggleButtonState = (inputList, buttonElement, {inactiveButtonClass, ...rest}) => {
+    
     if (hasInvalidInput(inputList)) {
         buttonElement.classList.add(inactiveButtonClass);
         buttonElement.setAttribute('disabled', true);
     }
     else {
         buttonElement.classList.remove(inactiveButtonClass);
-        buttonElement.removeAttribute('disabled');
+        buttonElement.removeAttribute('disabled', false);
     }
 }
 
@@ -61,12 +53,27 @@ const setEventListeners = (formElement, {inputSelector, submitButtonSelector,  .
     });
 }
 
-const enableValidation = ({formSelector, ...rest}) => {
-    const formList = Array.from(document.querySelectorAll(formSelector));
+const enableValidation = (form, { ...rest}) => {
+   /* const formList = Array.from(document.querySelectorAll(form));
     console.log(formList);
-    formList.forEach((formElement) => {
-        setEventListeners(formElement, rest);
-    })
+    formList.forEach((formElement) => {*/
+        setEventListeners(form, rest);
+   /* })*/
 };
 
-enableValidation(settings);
+/*enableValidation(settings);*/
+
+/*сброс ошибок и очистка формы*/ 
+function resetErrors(form) {
+    const formInputs = Array.from(form.querySelectorAll('.form__input'));
+    const formInputErrors = Array.from(form.querySelectorAll('.form__input-error'));
+    formInputs.forEach((input) => {
+        if (input.classList.contains('form__input_type_error'))
+            input.classList.remove('form__input_type_error');
+    });
+    formInputErrors.forEach((inputError) => {
+        if (inputError.classList.contains('form__input-error_active'))
+            inputError.classList.remove('form__input-error_active')
+    });
+}
+
