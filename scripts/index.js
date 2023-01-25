@@ -10,7 +10,8 @@ const jobProfile = profile.querySelector('.profile__subtitle');
 /*форма редактирования профиля*/
 const popupEdit = document.querySelector('.popup_type_edit');
 const formElementsEdit = popupEdit.querySelector('.form');
-const closePopupButton = popupEdit.querySelector('.popup__close-button');
+const closeEditPopupButton = popupEdit.querySelector('.popup__close-button');
+const closeEditFormButton = popupEdit.querySelector(".form__button");
 
 /*данные из формы*/
 const nameInput = formElementsEdit.querySelector('.form__input_theme_name');
@@ -32,6 +33,7 @@ const cardsList = document.querySelector('.gallery__cards');
 const popupAddCard = document.querySelector('.popup_type_new-card');
 const addCardButton = profile.querySelector('.profile__add-plus');
 const formElementsAddCard = popupAddCard.querySelector('.form');
+const closeAddCardFormButton = popupAddCard.querySelector(".form__button")
 
 /*закрытие формы добавления карточки*/
 const closeAddCardButton = popupAddCard.querySelector('.popup__close-button');
@@ -65,7 +67,7 @@ function openPopup(popup) {
 
 /*закрытие попапа*/
 function closePopup(popup) {
-    popup.removeEventListener('keydown', closeForEsc);
+    document.removeEventListener('keydown', closeForEsc);
     popup.removeEventListener('click', closeForOverley);
     popup.classList.remove('popup_opened');
 };
@@ -124,11 +126,10 @@ function openCardPopup(cardData) {
 
 /*событие на открытие формы редактирования профиля*/
 openEditPopupButton.addEventListener('click', () => {
-    formElementsEdit.reset();
-    enableValidation(formElementsEdit, settings);
     openPopup(popupEdit);
     nameInput.value = nameProfile.textContent;
     jobInput.value = jobProfile.textContent;
+    disableSubmiButton(closeEditFormButton);
     resetErrors(formElementsEdit);
 });
 
@@ -148,10 +149,10 @@ formElementsAddCard.addEventListener('submit', (evt) => {
 
 /*событие на открытие формы добавления карточки в попап*/
 addCardButton.addEventListener('click', () => {
-    formElementsAddCard.reset();
-    enableValidation(formElementsAddCard, settings);
-    resetErrors(formElementsAddCard);
     openPopup(popupAddCard);
+    disableSubmiButton(closeAddCardFormButton);
+    formElementsAddCard.reset();
+    resetErrors(formElementsAddCard);
 });
 
 

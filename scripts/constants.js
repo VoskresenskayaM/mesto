@@ -32,5 +32,5 @@ const settings = {
     submitButtonSelector: '.form__button',
     inactiveButtonClass: 'form__button_inactive',
     inputErrorClass: 'form__input_type_error',
-    errorClass: 'form__input-error_active'
+    errorClass: 'form__input-error_active',
   }

@@ -53,15 +53,15 @@ const setEventListeners = (formElement, {inputSelector, submitButtonSelector,  .
     });
 }
 
-const enableValidation = (form, { ...rest}) => {
-   /* const formList = Array.from(document.querySelectorAll(form));
+const enableValidation = ({formSelector, ...rest}) => {
+   const formList = Array.from(document.querySelectorAll(formSelector));
     console.log(formList);
-    formList.forEach((formElement) => {*/
-        setEventListeners(form, rest);
-   /* })*/
+    formList.forEach((formElement) => {
+        setEventListeners(formElement, rest);
+   })
 };
 
-/*enableValidation(settings);*/
+enableValidation(settings);
 
 /*сброс ошибок и очистка формы*/ 
 function resetErrors(form) {
@@ -75,5 +75,12 @@ function resetErrors(form) {
         if (inputError.classList.contains('form__input-error_active'))
             inputError.classList.remove('form__input-error_active')
     });
+}
+
+/*неактивная кнопка*/ 
+function disableSubmiButton(closeButton)
+{
+    closeButton.setAttribute('disabled', true);
+    closeButton.classList.add('form__button_inactive');
 }
 
