@@ -25,12 +25,13 @@ const initialCards = [
     }
 ]
 
-
 const settings = {
-    formSelector: '.form',
     inputSelector: '.form__input',
     submitButtonSelector: '.form__button',
     inactiveButtonClass: 'form__button_inactive',
+    errorInput: '.form__input-error',
     inputErrorClass: 'form__input_type_error',
     errorClass: 'form__input-error_active',
   }
+
+  export {initialCards, settings} 
