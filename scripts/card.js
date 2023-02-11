@@ -1,56 +1,63 @@
+
 export default class Card {
-    constructor(cardData, templateSelector, handleOpenPopupCardClick) {
+    constructor(cardData, templateSelector, handleOpenPopupCardClick, cardSettings) {
         this._imageLink = cardData.link;
         this._title = cardData.name;
         this._templateSelector = templateSelector;
         this._handleOpenPopupCardClick = handleOpenPopupCardClick;
+        this._cardSettings = cardSettings;
     }
 
-    _getTemplate() {
+    _getTemplate(card) {
         const cardElement = document
             .querySelector(this._templateSelector)
             .content
-            .querySelector('.gallery__card')
+            .querySelector(card)
             .cloneNode(true);
         return cardElement;
     }
 
-    _handleLikeClick() {
-        this._element.querySelector('.gallery__card-heart').classList.toggle('gallery__card-heart_active');
+    _handleLikeClick(cardActiv) {
+        this._heartDomElement.classList.toggle(cardActiv);
     }
 
-    _setLikeListener() {
-        this._element.querySelector('.gallery__card-heart').addEventListener('click', () => {
-            this._handleLikeClick();
+    _setLikeListener(cardActiv) {
+        this._heartDomElement.addEventListener('click', () => {
+            this._handleLikeClick(cardActiv);
         })
     }
 
-    _handleRemoveCardClick() {
-        this._element.querySelector('.gallery__card-delete').closest('.gallery__card').remove();
+    _handleRemoveCardClick(card) {
+        this._cardDeleteDomElement.closest(card).remove();
     }
 
-    _setRemoveCardListener() {
-        this._element.querySelector('.gallery__card-delete').addEventListener('click', () => {
-            this._handleRemoveCardClick();
+    _setRemoveCardListener(card) {
+        this._cardDeleteDomElement.addEventListener('click', () => {
+            this._handleRemoveCardClick(card);
         });
     }
 
     _setOpenPopupCardListener() {
-        this._element.querySelector('.gallery__card-image').addEventListener('click', () => {
+        this._imageDomElement.addEventListener('click', () => {
             this._handleOpenPopupCardClick(this._imageLink,  this._title);
         });
     }
 
     createCard() {
-        this._element = this._getTemplate();
-        this._element.querySelector('.gallery__card-title').textContent = this._title;
-        const image = this._element.querySelector('.gallery__card-image');
-        image.src = this._imageLink;
-        image.alt = this._title;
-        this._setLikeListener();
-        this._setRemoveCardListener();
+        this._element = this._getTemplate(this._cardSettings.card);
+       /*переменные карточки*/
+        this._heartDomElement = this._element.querySelector(this._cardSettings.cardLike);
+        this._titleDomElement = this._element.querySelector(this._cardSettings.cardTitle);
+        this._imageDomElement = this._element.querySelector(this._cardSettings.cardImage);
+        this._cardDeleteDomElement =this._element.querySelector(this._cardSettings.cardDelete);
+        /*присвоение переменным значений конкретной карточки*/ 
+        this._titleDomElement.textContent = this._title;
+        this._imageDomElement.src = this._imageLink;
+        this._imageDomElement.alt = this._title;
+        /*установка событий на карточку*/
+        this._setLikeListener(this._cardSettings.cardActiv);
+        this._setRemoveCardListener(this._cardSettings.card);
         this._setOpenPopupCardListener();
         return this._element;
     }
 }
-
