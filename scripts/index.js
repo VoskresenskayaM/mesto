@@ -1,7 +1,7 @@
 
-import Card  from './card.js';
-import FormValidator  from './validate.js';
-import  {initialCards, settings}  from './constants.js';
+import Card from './card.js';
+import FormValidator from './validate.js';
+import { initialCards, validateSettings, cardSettings } from './constants.js';
 
 /*кнопка редактирования в профайле*/
 const profile = document.querySelector('.profile');
@@ -40,7 +40,7 @@ function closeForEsc(evt) {
 function closeForOverley(evt) {
     if (evt.target.classList.contains('popup') ||
         evt.target.classList.contains('popup__close-button')) {
-            closePopup(document.querySelector('.popup_opened'));
+            closePopup(evt.currentTarget);
     }
 }
 
@@ -78,25 +78,32 @@ function sendEditForm(evt) {
     closePopup(popupEdit);
 };
 
+function createCard(element) {
+    const card = new Card(element, '#gallery__card', handleOpenPopupCardClick, cardSettings);
+    const cardElement = card.createCard();
+    return cardElement;
+}
+
 /*рендеринг страницы*/
 function renderCards(cardList) {
     cardList.forEach(element => {
-        const card = new Card(element, '#gallery__card', handleOpenPopupCardClick)
-        cardsList.append(card.createCard());
+        cardsList.append(createCard(element));
     });
 };
 
 renderCards(initialCards);
 
+/*валидация формы редактирования профиля*/
+const formEditValidator = new FormValidator(validateSettings, formElementsEdit);
+formEditValidator.enableValidation();
+
 /*событие на открытие формы редактирования профиля*/
 openEditPopupButton.addEventListener('click', () => {
     openPopup(popupEdit);
-    const formValidator =  new FormValidator(settings, formElementsEdit);
-    formValidator.enableValidation()
     nameInput.value = nameProfile.textContent;
     jobInput.value = jobProfile.textContent;
-    formValidator.disableSubmiButton(settings);
-    formValidator.resetErrors(settings);
+    formEditValidator.disableSubmiButton();
+    formEditValidator.resetErrors();
 });
 
 /*событие на сохранение данных формы редактирования профиля*/
@@ -109,19 +116,20 @@ formElementsAddCard.addEventListener('submit', (evt) => {
         name: placeInput.value,
         link: linkInput.value
     }
-    const newCard = new Card(cardData, '#gallery__card', openPopup)
-    cardsList.prepend(newCard.createCard());
+    cardsList.prepend(createCard(cardData));
     closePopup(popupAddCard);
 });
+
+/*валидация формы добавления карточки*/
+const formAddCardValidator = new FormValidator(validateSettings, formElementsAddCard);
+formAddCardValidator.enableValidation();
 
 /*событие на открытие формы добавления карточки в попап*/
 addCardButton.addEventListener('click', () => {
     openPopup(popupAddCard);
-    const formValidator =  new FormValidator(settings, formElementsAddCard);
-    formValidator.enableValidation();
-    formValidator.disableSubmiButton(settings);
+    formAddCardValidator.disableSubmiButton();
     formElementsAddCard.reset();
-    formValidator.resetErrors(settings);
+    formAddCardValidator.resetErrors();
 });
 
 

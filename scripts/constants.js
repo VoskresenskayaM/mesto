@@ -25,7 +25,7 @@ const initialCards = [
     }
 ]
 
-const settings = {
+const validateSettings  = {
     inputSelector: '.form__input',
     submitButtonSelector: '.form__button',
     inactiveButtonClass: 'form__button_inactive',
@@ -34,4 +34,13 @@ const settings = {
     errorClass: 'form__input-error_active',
   }
 
-  export {initialCards, settings} 
+  const cardSettings = {
+    card : '.gallery__card',
+    cardActiv : 'gallery__card-heart_active',
+    cardLike : '.gallery__card-heart',
+    cardTitle : '.gallery__card-title',
+    cardImage : '.gallery__card-image',
+    cardDelete : '.gallery__card-delete',
+}
+
+  export {initialCards, validateSettings, cardSettings}  
