@@ -43,4 +43,4 @@ const validateSettings  = {
     cardDelete : '.gallery__card-delete',
 }
 
-  export {initialCards, validateSettings, cardSettings}  
+  export {initialCards as inCards, validateSettings as validateSet, cardSettings as cardSet}  

@@ -1,7 +1,7 @@
 
 import Card from './card.js';
 import FormValidator from './validate.js';
-import { initialCards, validateSettings, cardSettings } from './constants.js';
+import { inCards, validateSet, cardSet } from './constants.js';
 
 /*кнопка редактирования в профайле*/
 const profile = document.querySelector('.profile');
@@ -78,8 +78,9 @@ function sendEditForm(evt) {
     closePopup(popupEdit);
 };
 
+/*создание отдельной карточки*/
 function createCard(element) {
-    const card = new Card(element, '#gallery__card', handleOpenPopupCardClick, cardSettings);
+    const card = new Card(element, '#gallery__card', handleOpenPopupCardClick, cardSet);
     const cardElement = card.createCard();
     return cardElement;
 }
@@ -91,10 +92,10 @@ function renderCards(cardList) {
     });
 };
 
-renderCards(initialCards);
+renderCards(inCards);
 
 /*валидация формы редактирования профиля*/
-const formEditValidator = new FormValidator(validateSettings, formElementsEdit);
+const formEditValidator = new FormValidator(validateSet, formElementsEdit);
 formEditValidator.enableValidation();
 
 /*событие на открытие формы редактирования профиля*/
@@ -102,7 +103,6 @@ openEditPopupButton.addEventListener('click', () => {
     openPopup(popupEdit);
     nameInput.value = nameProfile.textContent;
     jobInput.value = jobProfile.textContent;
-    formEditValidator.disableSubmiButton();
     formEditValidator.resetErrors();
 });
 
@@ -121,13 +121,12 @@ formElementsAddCard.addEventListener('submit', (evt) => {
 });
 
 /*валидация формы добавления карточки*/
-const formAddCardValidator = new FormValidator(validateSettings, formElementsAddCard);
+const formAddCardValidator = new FormValidator(validateSet, formElementsAddCard);
 formAddCardValidator.enableValidation();
 
 /*событие на открытие формы добавления карточки в попап*/
 addCardButton.addEventListener('click', () => {
     openPopup(popupAddCard);
-    formAddCardValidator.disableSubmiButton();
     formElementsAddCard.reset();
     formAddCardValidator.resetErrors();
 });

@@ -8,59 +8,67 @@ export default class FormValidator {
         this._buttonElement = this._form.querySelector(this._settings.submitButtonSelector);
     }
 
-    _showInputError = (form, inputElement, errorMessage, inputErrorClass, errorClass) => {
-        const errorElement = form.querySelector(`.${inputElement.id}-error`)
-        inputElement.classList.add(inputErrorClass);
-        errorElement.textContent = errorMessage;
-        errorElement.classList.add(errorClass);
+     /*показ ошибки*/
+    _showInputError = (inputElement) => {
+        const errorElement = this._form.querySelector(`.${inputElement.id}-error`)
+        inputElement.classList.add(this._settings.inputErrorClass);
+        errorElement.textContent = inputElement.validationMessage;
+        errorElement.classList.add(this._settings.errorClass);
     }
 
-    _hideInputError = (form, inputElement, inputErrorClass, errorClass) => {
-        const errorElement = form.querySelector(`.${inputElement.id}-error`)
-        inputElement.classList.remove(inputErrorClass);
-        errorElement.classList.remove(errorClass)
+  /*скрытие ошибки*/
+    _hideInputError = (inputElement) => {
+        const errorElement = this._form.querySelector(`.${inputElement.id}-error`)
+        inputElement.classList.remove(this._settings.inputErrorClass);
+        errorElement.classList.remove(this._settings.errorClass)
         errorElement.textContent = "";
     }
 
-    _toggleInputErrorState = (formElement, inputElement, { inputErrorClass, errorClass, ...rest }) => {
+  /*проверка валидности поля*/
+    _toggleInputErrorState = (inputElement) => {
         if (!inputElement.validity.valid) {
-            this._showInputError(formElement, inputElement, inputElement.validationMessage, inputErrorClass, errorClass);
+            this._showInputError(inputElement);
         }
         else {
-            this._hideInputError(formElement, inputElement, inputErrorClass, errorClass);
+            this._hideInputError(inputElement);
         }
     }
-
-    _hasInvalidInput = (inputList) => {
-        return inputList.some((inputElement) => {
-            return !inputElement.validity.valid;
+    
+   /*проверка валидности массива инпутов формы*/
+    _hasInvalidInput = () => {
+        return this._inputList.some((input) => {
+            return !input.validity.valid;
         });
     };
 
-    _toggleButtonState = (inputList, buttonElement, { inactiveButtonClass, ...rest }) => {
-
-        if (this._hasInvalidInput(inputList)) {
-            buttonElement.classList.add(inactiveButtonClass);
-            buttonElement.setAttribute('disabled', true);
+    /*смена состояния кнопки*/
+    _toggleButtonState = () => {
+        if (this._hasInvalidInput()) {
+            this._disableSubmiButton();
         }
         else {
-            buttonElement.classList.remove(inactiveButtonClass);
-            buttonElement.removeAttribute('disabled', false);
+            this._buttonElement.classList.remove(this._settings.inactiveButtonClass);
+            this._buttonElement.removeAttribute('disabled', false);
         }
     }
 
-    _setEventListeners = ({inputSelector, submitButtonSelector, ...rest }) => {
-        this._toggleButtonState(this._inputList, this._buttonElement, rest);
+     /*установка событий дл всех полей формы*/
+    _setEventListeners = () => {
+        this._toggleButtonState();
         this._inputList.forEach((input) => {
             input.addEventListener('input', () => {
-                this._toggleInputErrorState(this._form, input, rest);
-                this._toggleButtonState(this._inputList, this._buttonElement, rest);
+                this._toggleInputErrorState(input);
+                this._toggleButtonState();
             });
         });
     }
 
+    /*внешняя функция для валидации карточки*/
     enableValidation = () => {
-        this._setEventListeners(this._settings);
+        this._form.addEventListener(`submit`, () => {
+            this._disableSubmiButton();
+          });
+          this._setEventListeners();
     };
 
     /*сброс ошибок в форме*/
@@ -71,14 +79,14 @@ export default class FormValidator {
         });
         this._inputErrorsList.forEach((inputError) => {
             if (inputError.classList.contains(this._settings.errorClass))
-                inputError.classList.remove(this._settings.errorClass)
+                inputError.classList.remove(this._settings.errorClass);
         });
     }
 
-    /*неактивная кнопка*/
-    disableSubmiButton() {
+    /*установка для кнопки неактивного состояния*/
+    _disableSubmiButton() {
         this._buttonElement.setAttribute('disabled', true);
-        this._buttonElement.classList.add('form__button_inactive');;
+        this._buttonElement.classList.add(this._settings.inactiveButtonClass);
     }
 }
 
