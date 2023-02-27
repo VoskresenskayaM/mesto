@@ -5,18 +5,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./pages/index.css">
+    <!--<link rel="stylesheet" href="./pages/index.css">-->
     <title>Mesto</title>
 </head>
 
 <body class="page">
     <header class="header">
-        <img class="logo" src="./images/logo.svg" alt="логотип">
+        <img class="logo" src="<%=require('./images/logo.svg')%>" alt="логотип">
     </header>
     <main class="page__content">
         <section class="profile">
             <div class="profile__image-block">
-                <img class="profile__image" src="./images/kusto.jpg" alt="фото профиля">
+                <img class="profile__image" src="<%=require('./images/kusto.jpg')%>" alt="фото профиля">
                 <div class="profile__title-block">
                     <h1 class="profile__title">Жак-Ив Кусто</h1>
                     <p class="profile__subtitle">Исследователь океана</p>
@@ -29,8 +29,8 @@
             <ul class="gallery__cards">
                 <template id="gallery__card">
                     <li class="gallery__card">
-                        <img class="gallery__card-delete" src="./images/delete.svg" alt="удалить">
-                        <img class="gallery__card-image" src="./images/karachaevo-cherkesiya.jpg"
+                        <img class="gallery__card-delete" src="<%=require('./images/delete.svg')%>" alt="удалить">
+                        <img class="gallery__card-image" src="#"
                             alt="Карачаево-Черкесия">
                         <div class="gallery__card-title-block">
                             <h2 class="gallery__card-title">Карачаево-Черкесия</h2>
@@ -64,7 +64,7 @@
                 <h3 class="form__title">Новое место</h3>
                 <input id="place-input" class="form__input  form__input_theme_place" type="text" name="name" value="" placeholder="Название" required minlength="2" maxlength="30">
                 <span class="form__input-error place-input-error"></span>
-                <input id="link-input" class="form__input  form__input_theme_link"  name="profession" value="" placeholder="Ссылка на картинку" required type="url">
+                <input id="link-input" class="form__input  form__input_theme_link"  name="link" value="" placeholder="Ссылка на картинку" required type="url">
                 <span class="form__input-error link-input-error"></span>
                 <button class="form__button" type="submit">Создать</button>
             </form>

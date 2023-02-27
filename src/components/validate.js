@@ -44,7 +44,7 @@ export default class FormValidator {
     /*смена состояния кнопки*/
     _toggleButtonState = () => {
         if (this._hasInvalidInput()) {
-            this._disableSubmiButton();
+            this.disableSubmiButton();
         }
         else {
             this._buttonElement.classList.remove(this._settings.inactiveButtonClass);
@@ -65,9 +65,6 @@ export default class FormValidator {
 
     /*внешняя функция для валидации карточки*/
     enableValidation = () => {
-        this._form.addEventListener(`submit`, () => {
-            this._disableSubmiButton();
-          });
           this._setEventListeners();
     };
 
@@ -84,7 +81,7 @@ export default class FormValidator {
     }
 
     /*установка для кнопки неактивного состояния*/
-    _disableSubmiButton() {
+    disableSubmiButton() {
         this._buttonElement.setAttribute('disabled', true);
         this._buttonElement.classList.add(this._settings.inactiveButtonClass);
     }
