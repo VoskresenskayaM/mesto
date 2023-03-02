@@ -1,5 +1,4 @@
-import Popup from './popup.js'
-import { nameInput, jobInput } from "../utils/constants.js"
+import Popup from './Popup.js'
 
 export default class PopupWithForm extends Popup {
     constructor(callbakSubmit, popupSelector) {
@@ -8,17 +7,21 @@ export default class PopupWithForm extends Popup {
         this._selector = document.querySelector(popupSelector);
         this._form = this._selector.querySelector('.form')
         this._popup = document.querySelector(popupSelector);
+        this._inputList = Array.from(this._form.querySelectorAll('.form__input'));
     }
 
-    /*установка данных пользователя в инпуты поля*/
-    setValueInputs({data}) {
-        nameInput.value = data.name;
-        jobInput.value = data.profession;
+    /*установка данных в инпуты поля*/
+    setValueInputs({data}) { 
+        let index=0;
+        const dataValues = Object.values(data);
+        this._inputList.forEach(input=>{
+            input.value=dataValues[index];
+            index++;
+        })
     }
 
     /*получение данных из формы*/
     _getInputValues() {
-        this._inputList = Array.from(this._form.querySelectorAll('.form__input'));
         this._formValues = {};
         this._inputList.forEach(input => {
             this._formValues[input.name] = input.value;
