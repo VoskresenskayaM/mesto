@@ -16,10 +16,11 @@
     <main class="page__content">
         <section class="profile">
             <div class="profile__image-block">
-                <img class="profile__image" src="<%=require('./images/kusto.jpg')%>" alt="фото профиля">
+                <img class="profile__image" src="#" alt="фото профиля">
+                <!-- <img class="profile__image" src="<%=require('./images/kusto.jpg')%>" alt="фото профиля">-->
                 <div class="profile__title-block">
-                    <h1 class="profile__title">Жак-Ив Кусто</h1>
-                    <p class="profile__subtitle">Исследователь океана</p>
+                    <h1 class="profile__title"></h1>
+                    <p class="profile__subtitle"></p>
                 </div>
                 <button class="profile__edit" type="button" aria-label="изменить"></button>
             </div>
@@ -30,11 +31,13 @@
                 <template id="gallery__card">
                     <li class="gallery__card">
                         <img class="gallery__card-delete" src="<%=require('./images/delete.svg')%>" alt="удалить">
-                        <img class="gallery__card-image" src="#"
-                            alt="Карачаево-Черкесия">
+                        <img class="gallery__card-image" src="#" alt="Карачаево-Черкесия">
                         <div class="gallery__card-title-block">
                             <h2 class="gallery__card-title">Карачаево-Черкесия</h2>
-                            <button class="gallery__card-heart" type="button" aria-label="лайк"></button>
+                            <div class="gallery__card-heart-block">
+                                <button class="gallery__card-heart" type="button" aria-label="лайк"></button>
+                                <p class="gallery__card-heart-count"></p>
+                            </div>
                         </div>
                     </li>
                 </template>
@@ -49,9 +52,11 @@
             <button class="popup__close-button" type="button" aria-label="закрыть"></button>
             <form name="editUser" class="form" novalidate>
                 <h3 class="form__title">Редактировать профиль</h3>
-                <input id="name-input" class="form__input  form__input_theme_name" type="text" name="name" value="" placeholder="Имя" required minlength="2" maxlength="40">
+                <input id="name-input" class="form__input  form__input_theme_name" type="text" name="name" value=""
+                    placeholder="Имя" required minlength="2" maxlength="40">
                 <span class="form__input-error name-input-error"></span>
-                <input id="profession-input" class="form__input  form__input_theme_profession" type="text" name="profession" value="" placeholder="Профессия" required minlength="2" maxlength="200">
+                <input id="profession-input" class="form__input  form__input_theme_profession" type="text" name="about"
+                    value="" placeholder="Профессия" required minlength="2" maxlength="200">
                 <span class="form__input-error profession-input-error"></span>
                 <button class="form__button" type="submit">Сохранить</button>
             </form>
@@ -62,31 +67,49 @@
             <button class="popup__close-button" type="button" aria-label="закрыть"></button>
             <form name="addCard" class="form" novalidate>
                 <h3 class="form__title">Новое место</h3>
-                <input id="place-input" class="form__input  form__input_theme_place" type="text" name="name" value="" placeholder="Название" required minlength="2" maxlength="30">
+                <input id="place-input" class="form__input  form__input_theme_place" type="text" name="name" value=""
+                    placeholder="Название" required minlength="2" maxlength="30">
                 <span class="form__input-error place-input-error"></span>
-                <input id="link-input" class="form__input  form__input_theme_link"  name="link" value="" placeholder="Ссылка на картинку" required type="url">
+                <input id="link-input" class="form__input  form__input_theme_link" name="link" value=""
+                    placeholder="Ссылка на картинку" required type="url">
                 <span class="form__input-error link-input-error"></span>
                 <button class="form__button" type="submit">Создать</button>
             </form>
         </div>
     </div>
     <div class="popup  popup_type_image">
-            <div class="card-popup">
-                <button class="popup__close-button" type="button" aria-label="закрыть"></button>
-                <figure class="card-popup">
-                    <img class="card-popup__image" src="#" alt="">
-                    <figcaption>
-                        <h2 class="card-popup__title"></h2>
-                    </figcaption>
-                </figure>
-            </div>
+        <div class="card-popup">
+            <button class="popup__close-button" type="button" aria-label="закрыть"></button>
+            <figure class="card-popup">
+                <img class="card-popup__image" src="#" alt="">
+                <figcaption>
+                    <h2 class="card-popup__title"></h2>
+                </figcaption>
+            </figure>
+        </div>
     </div>
- 
-   
-    <script type="module"  src="./scripts/index.js"></script>
-   
- 
- 
+
+    <div class="popup  popup_type_delete-card">
+        <div class="popup__container">
+            <button class="popup__close-button" type="button" aria-label="закрыть"></button>
+            <form name="addCard" class="form" novalidate>
+                <h3 class="form__title">Вы уверенны?</h3>
+                <!--<input id="place-input" class="form__input  form__input_theme_place" type="text" name="name" value=""
+                    placeholder="Название" required minlength="2" maxlength="30">
+                <span class="form__input-error place-input-error"></span>
+                <input id="link-input" class="form__input  form__input_theme_link" name="link" value=""
+                    placeholder="Ссылка на картинку" required type="url">
+                <span class="form__input-error link-input-error"></span>-->
+                <button class="form__button" type="submit">Да</button>
+            </form>
+        </div>
+    </div>
+
+
+    <script type="module" src="./scripts/index.js"></script>
+
+
+
 
 </body>
 

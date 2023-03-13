@@ -1,4 +1,5 @@
 .gallery__card-heart {
+    margin-top: 5px;
     height: 19px;
     min-width: 22px;
     transition: opacity 0.5s ease;

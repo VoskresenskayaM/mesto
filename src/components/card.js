@@ -1,9 +1,11 @@
 export default class Card {
-    constructor({cardData, templateSelector, handleCardClick}, cardSettings) {
+    constructor({cardData, /*handleDeleteIconClick, */ handleCardClick}, templateSelector, currentUserId, cardSettings) {
         this._cardData=cardData,
+        /*this._handleDeleteIconClick=handleDeleteIconClick;*/
         this._templateSelector = templateSelector;
         this._handleCardClick = handleCardClick;
         this._cardSettings = cardSettings;
+        this._isOwner = this._cardData.owner._id===currentUserId
     }
 
     /*получение элемента template*/
@@ -28,12 +30,14 @@ export default class Card {
     _setEventListeners() {
         /*событие на открытие попап карточки*/
         this._imageDomElement = this._element.querySelector(this._cardSettings.cardImage);
+        this._likeCountDomElement = this._element.querySelector(this._cardSettings.cardLikeCount);
         this._imageDomElement.addEventListener('click', () => {
             this._handleCardClick({cardData: this._cardData});
         })
         /*событие на удаление  карточки*/
         this._cardDeleteDomElement = this._element.querySelector(this._cardSettings.cardDelete)
         this._cardDeleteDomElement.addEventListener('click', () => {
+           /* this._handleDeleteIconClick()*/
             this._handleRemoveCardClick();
         });
         /*событие на лайк*/
@@ -52,6 +56,11 @@ export default class Card {
         this._titleDomElement.textContent = this._cardData.name;
         this._imageDomElement.src = this._cardData.link;
         this._imageDomElement.alt = this._cardData.name;
+        this._likeCountDomElement.textContent =this._cardData.likes.length;
+       if(!this._isOwner){
+        //сделать кнопки скрытые и неактивные классами
+            this._cardDeleteDomElement.remove()
+        }
         return this._element;
     }
 }

@@ -29,6 +29,8 @@
 @import url(../blocks/gallery/__card-delete/gallery__card-delete.css);
 @import url(../blocks/gallery/__card-heart/gallery__card-heart.css);
 @import url(../blocks/gallery/__card-heart/_active/gallery__card-heart_active.css);
+@import url(../blocks/gallery/__card-heart-block/gallery__card-heart-block.css);
+@import url(../blocks/gallery/__card-heart-count/gallery__card-heart-count.css);
 
 /*footer*/
 @import url(../blocks/footer/footer.css);

@@ -38,6 +38,7 @@ const cardSettings = {
     card: '.gallery__card',
     cardActiv: 'gallery__card-heart_active',
     cardLike: '.gallery__card-heart',
+    cardLikeCount: '.gallery__card-heart-count',
     cardTitle: '.gallery__card-title',
     cardImage: '.gallery__card-image',
     cardDelete: '.gallery__card-delete',
@@ -54,6 +55,7 @@ const openEditPopupButton = profile.querySelector('.profile__edit');
 /*имя и профессия из профайла*/
 const nameProfile = profile.querySelector('.profile__title');
 const jobProfile = profile.querySelector('.profile__subtitle');
+const imageProfile =profile.querySelector('.profile__image');
 /*форма редактирования профиля*/
 const popupEdit = document.querySelector('.popup_type_edit');
 const formElementsEdit = popupEdit.querySelector('.form');
@@ -73,6 +75,7 @@ export {
     openEditPopupButton,
     nameProfile,
     jobProfile,
+    imageProfile,
     formElementsEdit,
     addCardButton,
     formElementsAddCard
