@@ -6,16 +6,18 @@ export default class PopupWithForm extends Popup {
         this._callbakSubmit = callbakSubmit;
         this._selector = document.querySelector(popupSelector);
         this._form = this._selector.querySelector('.form')
+        this._button = this._form.querySelector('.form__button')
         this._popup = document.querySelector(popupSelector);
         this._inputList = Array.from(this._form.querySelectorAll('.form__input'));
+        this._buttonMeaning = this._button.textContent;
     }
 
     /*установка данных в инпуты поля*/
-    setValueInputs({data}) { 
-        let index=0;
+    setValueInputs({ data }) {
+        let index = 0;
         const dataValues = Object.values(data);
-        this._inputList.forEach(input=>{
-            input.value=dataValues[index];
+        this._inputList.forEach(input => {
+            input.value = dataValues[index];
             index++;
         })
     }
@@ -25,7 +27,7 @@ export default class PopupWithForm extends Popup {
         this._formValues = {};
         this._inputList.forEach(input => {
             this._formValues[input.name] = input.value;
-          });
+        });
         return this._formValues;
     }
 
@@ -37,8 +39,16 @@ export default class PopupWithForm extends Popup {
             this.close();
         });
         super.setEventListeners();
-        }
-    
+    }
+
+    setButtonSave() {
+        this._button.textContent = 'Сохранение...'
+    }
+
+    setBattonMeaning() {
+        this._button.textContent = this._buttonMeaning
+    }
+
     /*закрытие попап*/
     close() {
         this._form.reset();

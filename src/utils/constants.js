@@ -42,6 +42,7 @@ const cardSettings = {
     cardTitle: '.gallery__card-title',
     cardImage: '.gallery__card-image',
     cardDelete: '.gallery__card-delete',
+    cardDeleteInactiv: 'gallery__card-delete_inactiv',
 }
 
 /*крестик закрытия попапа*/
@@ -56,6 +57,7 @@ const openEditPopupButton = profile.querySelector('.profile__edit');
 const nameProfile = profile.querySelector('.profile__title');
 const jobProfile = profile.querySelector('.profile__subtitle');
 const imageProfile =profile.querySelector('.profile__image');
+const imageProfileOverley =profile.querySelector('.profile__image-overley');
 /*форма редактирования профиля*/
 const popupEdit = document.querySelector('.popup_type_edit');
 const formElementsEdit = popupEdit.querySelector('.form');
@@ -63,6 +65,9 @@ const formElementsEdit = popupEdit.querySelector('.form');
 const popupAddCard = document.querySelector('.popup_type_new-card');
 const addCardButton = profile.querySelector('.profile__add-plus');
 const formElementsAddCard = popupAddCard.querySelector('.form');
+
+const popupNewAvatar = document.querySelector('.popup_type_new-avatar')
+const formElementsEditAvatar = popupNewAvatar.querySelector('.form')
 
 export {
     initialCards as inCards,
@@ -78,6 +83,8 @@ export {
     imageProfile,
     formElementsEdit,
     addCardButton,
-    formElementsAddCard
+    formElementsAddCard,
+    formElementsEditAvatar,
+    imageProfileOverley
 }
 
