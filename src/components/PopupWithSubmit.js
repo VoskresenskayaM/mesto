@@ -4,7 +4,7 @@ export default class PopupWithSubmit extends Popup {
     constructor(callbakSubmit, popupSelector) {
         super(popupSelector);
         this._selector = document.querySelector(popupSelector);
-        this._button = this._selector.querySelector('.form__button')
+        this._button = this._selector.querySelector('.popup__button')
         this._callbakSubmit = callbakSubmit;
         this._buttonMeaning = this._button.textContent;
     }
