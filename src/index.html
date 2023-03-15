@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--<link rel="stylesheet" href="./pages/index.css">-->
     <title>Mesto</title>
 </head>
 
@@ -94,7 +93,7 @@
         </div>
     </div>
     <div class="popup  popup_type_delete-card">
-        <div class="popup__container popup__contener__theme_whithsubmit">
+        <div class="popup__container popup__conteiner__theme_whithsubmit">
             <button class="popup__close-button" type="button" aria-label="закрыть"></button>
             <div class="popup__question-block">
                 <h3 class="popup__title">Вы уверены?</h3>
@@ -102,15 +101,14 @@
            </div> 
         </div>
     </div>
-
     <div class="popup  popup_type_new-avatar">
-        <div class="popup__container popup__contener__theme_whitAvatar">
+        <div class="popup__container popup__container__theme_whithAvatar">
             <button class="popup__close-button" type="button" aria-label="закрыть"></button>
             <form name="editAvatar" class="form" novalidate>
                 <h3 class="form__title">Обновить аватар</h3>
-                <input id="link-input" class="form__input  form__input_theme_link" name="link" value=""
+                <input id="avatar-input" class="form__input  form__input_theme_avatar" name="link" value=""
                     placeholder="Ссылка на картинку" required type="url">
-                <span class="form__input-error link-input-error"></span>
+                <span class="form__input-error  avatar-input-error"></span>
                 <button class="form__button" type="submit">Сохранить</button>
             </form>
         </div>
