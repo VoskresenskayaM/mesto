@@ -128,7 +128,6 @@ const popupAddCard = new PopupWithForm((cardData) => {
     api.addNewCard({ item: cardData })
         .then((newCard) => {
             defaultCardList.addItemStart(createCard({ data: newCard }));
-            popupAddCard.close();
         })
         .catch((err) => {
             console.log(err)
@@ -200,15 +199,4 @@ addCardButton.addEventListener('click', () => {
     formValidators[formSet.formAddCard].resetErrors();
     formValidators[formSet.formAddCard].disableSubmiButton();
 });
-
-
-
-
-
-
-
-
-
-
-
 

@@ -29,3 +29,4 @@ export default class Popup {
         this._popup.addEventListener('click', this._handlePopupClose);
     }
 }
+

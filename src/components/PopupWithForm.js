@@ -50,3 +50,4 @@ export default class PopupWithForm extends Popup {
         super.close();
     }
 }
+
