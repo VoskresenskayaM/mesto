@@ -1,7 +1,7 @@
 export default class Card {
     constructor({ cardData, handleDeleteIconClick, handleCardClick, handleLikeClickApi }, templateSelector, currentUserId, cardSettings) {
-        this._cardData = cardData,
-            this._handleDeleteIconClick = handleDeleteIconClick;
+        this._cardData = cardData;
+        this._handleDeleteIconClick = handleDeleteIconClick;
         this._templateSelector = templateSelector;
         this._handleCardClick = handleCardClick;
         this._handleLikeClickApi = handleLikeClickApi;
@@ -20,7 +20,7 @@ export default class Card {
             .cloneNode(true);
         return cardElement;
     }
-     
+
     _handleLikeClick() {
         this._heartDomElement.classList.toggle(this._cardSettings.cardActiv);
     }

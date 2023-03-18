@@ -1,10 +1,8 @@
-
 export default class FormValidator {
     constructor(settings, form) {
         this._settings = settings;
         this._form = form;
         this._inputList = Array.from(this._form.querySelectorAll(this._settings.inputSelector));
-        this._inputErrorsList = Array.from(this._form.querySelectorAll(this._settings.errorInput));
         this._buttonElement = this._form.querySelector(this._settings.submitButtonSelector);
     }
 
@@ -70,13 +68,8 @@ export default class FormValidator {
 
     /*сброс ошибок в форме*/
     resetErrors() {
-        this._inputList.forEach((input) => {
-            if (input.classList.contains(this._settings.inputErrorClass))
-                input.classList.remove(this._settings.inputErrorClass);
-        });
-        this._inputErrorsList.forEach((inputError) => {
-            if (inputError.classList.contains(this._settings.errorClass))
-                inputError.classList.remove(this._settings.errorClass);
+        this._inputList.forEach((input)=>{
+            this._hideInputError(input);
         });
     }
 

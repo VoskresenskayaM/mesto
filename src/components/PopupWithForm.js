@@ -7,19 +7,15 @@ export default class PopupWithForm extends Popup {
         this._selector = document.querySelector(popupSelector);
         this._form = this._selector.querySelector('.form')
         this._button = this._form.querySelector('.form__button')
-        this._popup = document.querySelector(popupSelector);
         this._inputList = Array.from(this._form.querySelectorAll('.form__input'));
-        this._buttonMeaning = this._button.textContent;
+        this._buttonText = this._button.textContent;
     }
 
     /*установка данных в инпуты поля*/
     setValueInputs({ data }) {
-        let index = 0;
-        const dataValues = Object.values(data);
-        this._inputList.forEach(input => {
-            input.value = dataValues[index];
-            index++;
-        })
+        this._inputList.forEach((input) => {
+            input.value = data[input.name];
+        });
     }
 
     /*получение данных из формы*/
@@ -36,17 +32,16 @@ export default class PopupWithForm extends Popup {
         this._form.addEventListener('submit', (evt) => {
             evt.preventDefault();
             this._callbakSubmit(this._getInputValues());
-            this.close();
         });
         super.setEventListeners();
     }
 
-    setButtonSave() {
-        this._button.textContent = 'Сохранение...'
-    }
-
-    setBattonMeaning() {
-        this._button.textContent = this._buttonMeaning
+    renderLoading(isLoading, loadingText = 'Сохранение...') {
+        if (isLoading) {
+            this._button.textContent = loadingText;
+        } else {
+            this._button.textContent = this._buttonText;
+        }
     }
 
     /*закрытие попап*/
@@ -54,5 +49,4 @@ export default class PopupWithForm extends Popup {
         this._form.reset();
         super.close();
     }
-
 }

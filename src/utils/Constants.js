@@ -45,46 +45,35 @@ const cardSettings = {
     cardDeleteInactiv: 'gallery__card-delete_inactiv',
 }
 
-/*крестик закрытия попапа*/
-const popupCloseButton = document.querySelector('.popup__close-button');
-/*поля формы редактирования профиля*/
-const nameInput = document.querySelector('.form__input_theme_name');
-const jobInput = document.querySelector('.form__input_theme_profession');
+const formSettings = {
+    formSelector: '.form',
+    formEditUser : 'editUser',
+    formAddCard : 'addCard',
+    formEditAvatar : 'editAvatar'
+}
+
 /*кнопка редактирования в профайле*/
 const profile = document.querySelector('.profile');
 const openEditPopupButton = profile.querySelector('.profile__edit');
-/*имя и профессия из профайла*/
+/*имя, профессия, фото профайла*/
 const nameProfile = profile.querySelector('.profile__title');
 const jobProfile = profile.querySelector('.profile__subtitle');
 const imageProfile =profile.querySelector('.profile__image');
+/*кнопка смены фото профиля*/
 const imageProfileOverley =profile.querySelector('.profile__image-overley');
-/*форма редактирования профиля*/
-const popupEdit = document.querySelector('.popup_type_edit');
-const formElementsEdit = popupEdit.querySelector('.form');
-/*открытие формы добавления карточки*/
-const popupAddCard = document.querySelector('.popup_type_new-card');
+/*кнопка добавления карточки*/
 const addCardButton = profile.querySelector('.profile__add-plus');
-const formElementsAddCard = popupAddCard.querySelector('.form');
-
-const popupNewAvatar = document.querySelector('.popup_type_new-avatar')
-const formElementsEditAvatar = popupNewAvatar.querySelector('.form')
 
 export {
     initialCards as inCards,
     validateSettings as validateSet,
     cardSettings as cardSet,
-    popupCloseButton,
-    nameInput,
-    jobInput,
-    /*index.js*/
+    formSettings as formSet,
     openEditPopupButton,
     nameProfile,
     jobProfile,
     imageProfile,
-    formElementsEdit,
     addCardButton,
-    formElementsAddCard,
-    formElementsEditAvatar,
     imageProfileOverley
 }
 

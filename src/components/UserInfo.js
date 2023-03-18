@@ -1,10 +1,14 @@
-
 export default class UserInfo {
+    constructor({ nameSelector, aboutSelector, avatarSelector }) {
+        this._nameSelector = nameSelector;
+        this._aboutSelector = aboutSelector;
+        this._avatarSelector = avatarSelector;
+    }
 
-    setUserInfoInProfile(nameSelector, aboutSelector, imageSelector) {
-        nameSelector.textContent = this._name;
-        aboutSelector.textContent = this._about;
-        imageSelector.src = this._image;
+    setUserInfoInProfile() {
+        this._nameSelector.textContent = this._name;
+        this._aboutSelector.textContent = this._about;
+        this._avatarSelector.src = this._image;
     }
 
     getUserInfo() {
@@ -24,16 +28,6 @@ export default class UserInfo {
         this._id = data._id;
         this._cohort = data.cohort;
     }
-
-    editUserInfo({ data }) {
-        if (data.name !== this._name)
-            this._name = data.name;
-        if (data.about !== this._about)
-            this._about = data.about;
-        if (data.image !== this._image)
-            this._image = data.avatar;
-    }
-
 }
 
 
