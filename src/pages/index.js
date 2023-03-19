@@ -3,8 +3,7 @@ import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js';
 import Api from '../components/Api.js'
 import {
-    validateSet, cardSet, formSet, openEditPopupButton,
-    nameProfile, jobProfile, imageProfile, addCardButton, imageProfileOverley
+    validateSet, cardSet, formSet, openEditPopupButton, addCardButton, imageProfileOverley
 } from '../utils/Constants.js';
 import Section from '../components/Section.js';
 import PopupWithImage from '../components/PopupWithImage.js';
@@ -23,9 +22,9 @@ const defaultCardList = new Section({
 
 /*класс с информацией о пользователе*/
 const userInfo = new UserInfo({
-    nameSelector: nameProfile,
-    aboutSelector: jobProfile,
-    avatarSelector: imageProfile
+    nameSelector: '.profile__title',
+    aboutSelector: '.profile__subtitle',
+    avatarSelector: '.profile__image'
 });
 
 /*класс для работы с Api*/
@@ -72,8 +71,6 @@ api.getAllCardWhithUser()
     .then(([cards, user]) => {
         /*установка данных с сервера текущему пользователю*/
         userInfo.setUserInfo({ data: user });
-        /*установка данных пользователя на сайт при открытии страницы*/
-        userInfo.setUserInfoInProfile();
         /*рендеринг карточек, полученных с сервера*/
         defaultCardList.renderItems(cards);
     })
@@ -106,15 +103,14 @@ popupWithImage.setEventListeners();
 /*попап редактирования профиля*/
 const popupEditProfile = new PopupWithForm((userData) => {
     popupEditProfile.renderLoading(true)
-    api.editUserInfo({ item: userData }).then((newItem) => {
-        userInfo.setUserInfo({ data: newItem });
-        userInfo.setUserInfoInProfile();
+    api.editUserInfo({ item: userData }).then((res) => {
+            userInfo.setUserInfo({ data: res });
+            popupEditProfile.close();
     })
         .catch((err) => {
             console.log(err);
         })
         .finally(() => {
-            popupEditProfile.close();
             popupEditProfile.renderLoading(false);
         })
 }, '.popup_type_edit');
@@ -128,12 +124,12 @@ const popupAddCard = new PopupWithForm((cardData) => {
     api.addNewCard({ item: cardData })
         .then((newCard) => {
             defaultCardList.addItemStart(createCard({ data: newCard }));
+                popupAddCard.close();
         })
         .catch((err) => {
             console.log(err)
         })
         .finally(() => {
-            popupAddCard.close();
             popupAddCard.renderLoading(false);
         })
 }, '.popup_type_new-card');
@@ -146,12 +142,12 @@ const popupDeleteCard = new PopupWithSubmit(() => {
     popupDeleteCard.renderLoading(true);
     const card = popupDeleteCard.getParams();
     api.deleteCard(card.getCardId())
-        .then(() => {
+        .then((res) => {
             card.handleRemoveCardClick();
+                popupDeleteCard.close();
         })
         .catch((err) => console.log(err))
         .finally(() => {
-            popupDeleteCard.close();
             popupDeleteCard.renderLoading(false);
         });
 }, '.popup_type_delete-card')
@@ -164,11 +160,10 @@ const popupEditAvatar = new PopupWithForm((data) => {
     popupEditAvatar.renderLoading(true)
     api.editAvatar({ item: data }).then((res) => {
         userInfo.setUserInfo({ data: res });
-        userInfo.setUserInfoInProfile();
+            popupEditAvatar.close();
     })
         .catch((err) => console.log(err))
         .finally(() => {
-            popupEditAvatar.close();
             popupEditAvatar.renderLoading(false);
         })
 },

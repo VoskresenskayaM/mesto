@@ -5,7 +5,7 @@ export default class PopupWithSubmit extends Popup {
         super(popupSelector);
         this._button = this._popup.querySelector('.popup__button');
         this._callbakSubmit = callbakSubmit;
-        this._button.Text = this._button.textContent;
+        this._buttonText = this._button.textContent;
     }
 
     setParams(card) {

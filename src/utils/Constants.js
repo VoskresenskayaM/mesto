@@ -52,13 +52,9 @@ const formSettings = {
     formEditAvatar : 'editAvatar'
 }
 
-/*кнопка редактирования в профайле*/
 const profile = document.querySelector('.profile');
+/*кнопка редактирования в профайле*/
 const openEditPopupButton = profile.querySelector('.profile__edit');
-/*имя, профессия, фото профайла*/
-const nameProfile = profile.querySelector('.profile__title');
-const jobProfile = profile.querySelector('.profile__subtitle');
-const imageProfile =profile.querySelector('.profile__image');
 /*кнопка смены фото профиля*/
 const imageProfileOverley =profile.querySelector('.profile__image-overley');
 /*кнопка добавления карточки*/
@@ -70,9 +66,6 @@ export {
     cardSettings as cardSet,
     formSettings as formSet,
     openEditPopupButton,
-    nameProfile,
-    jobProfile,
-    imageProfile,
     addCardButton,
     imageProfileOverley
 }

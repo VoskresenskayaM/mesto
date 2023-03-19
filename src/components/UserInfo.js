@@ -1,14 +1,15 @@
 export default class UserInfo {
     constructor({ nameSelector, aboutSelector, avatarSelector }) {
-        this._nameSelector = nameSelector;
-        this._aboutSelector = aboutSelector;
-        this._avatarSelector = avatarSelector;
+        const profile = document.querySelector('.profile');
+        this._nameProfile = profile.querySelector(nameSelector);
+        this._aboutProfile = profile.querySelector(aboutSelector);
+        this._imageProfile =profile.querySelector(avatarSelector);
     }
 
-    setUserInfoInProfile() {
-        this._nameSelector.textContent = this._name;
-        this._aboutSelector.textContent = this._about;
-        this._avatarSelector.src = this._image;
+    _setUserInfoInProfile() {
+        this._nameProfile.textContent = this._name;
+        this._aboutProfile.textContent = this._about;
+        this._imageProfile.src = this._image;
     }
 
     getUserInfo() {
@@ -27,6 +28,7 @@ export default class UserInfo {
         this._image = data.avatar;
         this._id = data._id;
         this._cohort = data.cohort;
+        this._setUserInfoInProfile();
     }
 }
 
